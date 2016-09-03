@@ -18,4 +18,8 @@ class Baz
   def fifth_method
     # Author 2 implemented me
   end
+
+  def sixth_method
+    # Author 3 implemented me
+  end
 end
