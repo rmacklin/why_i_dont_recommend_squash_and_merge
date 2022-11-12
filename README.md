@@ -3,7 +3,7 @@
 A sample repository demonstrating the downsides of GitHub's "squash and merge"
 compared to a regular merge
 
-## Multiple commit authors in a single PR
+## Multiple commit authors in a single PR aren't respected
 
 With a merge commit, the git blame still attributes each change to the right
 author. With squash and merge, it's all attributed to one author, who may have
@@ -20,7 +20,7 @@ However, it still doesn't attribute specific changes (modified lines) to their
 respective individual authors, so it's still less useful than the regular merge
 commit history.
 
-## Moving/renaming a file
+## Moving/renaming a file can disconnect its history
 
 It is frequently necessary to move/rename a file in one commit and then modify
 it in a second commit in order for git to track it as the same file. With a
