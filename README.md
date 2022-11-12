@@ -13,6 +13,13 @@ only contributed a single commit with a very small change.
 vs
 [Bad (squash and merge)](https://github.com/rmacklin/why_i_dont_recommend_squash_and_merge/pull/2#issuecomment-244521234)
 
+Update: GitHub made this a bit better with co-author attribution on squash
+merges:
+https://github.blog/changelog/2019-12-19-improved-attribution-when-squashing-commits.
+However, it still doesn't attribute specific changes (modified lines) to their
+respective individual authors, so it's still less useful than the regular merge
+commit history.
+
 ## Moving/renaming a file
 
 It is frequently necessary to move/rename a file in one commit and then modify
@@ -68,7 +75,10 @@ had if those PRs had been "squash and merged". While `git log` will give you
 access to all of the granular commits from each PR, `git log --first-parent`
 will give you the history of each merge into the branch, omitting the
 individual commits from each PR, just like the history you would've had with
-squash and merge!
+squash and merge! The `--first-parent` flag can also be passed to other
+commands such as `git bisect --first-parent`, `git blame --first-parent`, and
+`git show --first-parent` to have them operate as if you had a history of
+"squash and merged" PRs. You get the best of both worlds!
 
 So, go ahead and say "No" to GitHub's "squash and merge" button - you won't
 regret it :)
