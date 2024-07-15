@@ -78,7 +78,10 @@ individual commits from each PR, just like the history you would've had with
 squash and merge! The `--first-parent` flag can also be passed to other
 commands such as `git bisect --first-parent`, `git blame --first-parent`, and
 `git show --first-parent` to have them operate as if you had a history of
-"squash and merged" PRs. You get the best of both worlds!
+"squash and merged" PRs. Also, the unsquashed history affords you the ability
+to revert both an individual commit (`git revert SHA`) and an entire PR
+(`git revert -m 1 MERGE_SHA`) in one go. You really get the best of both worlds
+when you use regular merge commits!
 
 So, go ahead and say "No" to GitHub's "squash and merge" button - you won't
 regret it :)
