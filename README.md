@@ -56,6 +56,30 @@ commits was preserved with a regular merge, `git bisect` will drop you on one
 of those +50/-30 commits that only touched a couple files, making it much
 easier to quickly spot the offending code.
 
+## Squash and merge can make it more difficult to maintain forks
+
+When a project is public and has any long-running pull requests, there may be
+forks that choose to pull in the changes from a PR before it's merged into the
+upstream repository. If the PR is eventually merged after a few new changes
+have been pushed, using a regular merge commit will cause the least trouble for
+the forks: they can likely pull from upstream to get those final changes
+without running into any conflicts. However, if the PR is squash and merged,
+the history of the upstream branch will not contain the commits that had
+already been pulled into the forks; as a result, pulling from upstream can
+introduce conflicts that have to be manually resolved in each fork.
+
+## Chained pull requests won't be simultaneously merged together
+
+If you have a pull request #FINAL that includes the changes from another pull
+request #PART1 (e.g. as part of a chain of related PRs), GitHub can mark both
+pull requests as "Merged" when pull request #FINAL is merged using a regular
+merged commit. However, if it is squash and merged, only pull request #FINAL
+will be marked as "Merged"; GitHub will leave pull request #PART1 open (and it
+will probably indicate it has conflicts with the base branch). GitHub doesn't
+know the PRs are part of a chain, but it "just works" when you use a regular
+merge commit because GitHub can detect that the HEAD commit of each PR ended up
+in the base branch.
+
 # You can have your cake and eat it, too!
 
 Now comes the good news! First of all, let me be clear that I absolutely
